@@ -3,7 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
     <title>Document</title>
   </head>
-  <body><h1>Tables</h1></body>
+  <body>
+    <div class="jumbotron jumbotron-fluid text-center">
+      <div class="container">
+        <h1 class="display-4">Hot Restaurant</h1>
+        <hr class="my-4" />
+        <p class="lead">Book your seat before they are all gone!</p>
+        <p class="lead d-inline-flex p-2">
+          <a class="btn btn-primary btn-lg pr-5" href="./reserve" role="button"
+            >Make Reservation</a
+          >
+          <a class="btn btn-danger btn-lg pl-5" href="./index" role="button"
+            >Home</a
+          >
+        </p>
+      </div>
+    </div>
+
+    <div id="reservations" class="container">
+      <div class="card">
+        <div class="card-header col-12 mx-auto">
+          <h2>Current Reservations</h2>
+        </div>
+      </div>
+    </div>
+    <script>
+      src =
+        "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js";
+      integrity =
+        "sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW";
+      crossorigin = "anonymous";
+    </script>
+  </body>
 </html>
