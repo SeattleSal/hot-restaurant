@@ -35,24 +35,54 @@
           <h2>Current Reservations</h2>
           <span id="newReservation"></span>
         </div>
+        <div class="card-header col-12 mx-auto">
+          <h2>Waitlist</h2>
+          <span id="waitList"></span>
+        </div>
       </div>
     </div>
     <script type="text/javascript">
+
       $.get("/api/tables/", function (data) {
-        console.log(data[0].customerID);
+        // console.log(data[0].customerID);
         if (data) {
           for (let i = 0; i < data.length; i++) {
-            $("#newReservation").append(`<li id=${data[i].customerID}>${i+1} ${data[i].customerID}</li>`);
+            $("#newReservation").append(`<li style="display:inline-block" id=${data[i].customerID}>${i+1} ${data[i].customerID}</li><button class="btn btn-danger" id=${data[i].customerID}>Clear</button><br>`);
           }
         }
       });
+      $.get("/api/waitlist/", function (data) {
+        // console.log(data[0].customerID);
+        if (data) {
+          for (let i = 0; i < data.length; i++) {
+            $("#waitList").append(`<li style="display:inline-block" id=${data[i].customerID}>${i+1} ${data[i].customerID}</li><button class="btn btn-danger" id=${data[i].customerID}>Clear</button><br>`);
+          }
+        }
+      });
+
+      $("#newReservation").on("click", ".btn", function() {
+        $.post("/api/removeTb/" + this.id).then(function (data) {
+          alert(data);
+          // need to reload page
+        })
+      });
+
+      $("#waitList").on("click", ".btn", function() {
+        $.post("/api/removeWL/" + this.id).then(function (data) {
+          alert(data);
+          // need to reload page
+
+        })
+      });
+
+
     </script>
-    <script>
+    <script
       src =
-        "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js";
+        "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity =
-        "sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW";
-      crossorigin = "anonymous";
+        "sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin = "anonymous">
     </script>
   </body>
 </html>

@@ -72,12 +72,10 @@ app.use(express.json());
 
       if (tables.length < 5){
           tables.push(newCustomer);
-          // res.json(newCustomer);
-          // return true?
+          res.json("Reservation made!");
       } else {
           waitlist.push(newCustomer);
-          // res.json(newCustomer);
-          // return false?
+          res.json("You are on the waitlist!");
       }
 
     //   console.log(newCustomer);
@@ -95,6 +93,21 @@ app.use(express.json());
     }];
     res.send(successMessage);
   });
+
+  app.post("/api/removeTb/:id", function (req, res){
+    const id = req.params.id;
+    const newList = tables.filter(table => table.customerID != id);
+    tables = [...newList];
+
+  })
+
+  app.post("/api/removeWL/:id", function (req, res){
+    const id = req.params.id;
+    const newList = waitlist.filter(table => table.customerID != id);
+    waitlist = [...newList];
+
+  })
+
 
   // Starts the server to begin listening
 // =============================================================

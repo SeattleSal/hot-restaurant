@@ -85,8 +85,7 @@
           customerID: $("#inputId").val().trim(),
         };
         $.post("/api/tables", newCustomer).then(function (data) {
-          console.log("reserve.html", data);
-          alert("Adding customer...");
+          alert(data);
         });
 
       });
