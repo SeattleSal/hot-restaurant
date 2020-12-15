@@ -9,6 +9,7 @@
       integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
       crossorigin="anonymous"
     />
+    <script src="https://code.jquery.com/jquery.js"></script>
     <title>Document</title>
   </head>
   <body>
@@ -32,9 +33,20 @@
       <div class="card">
         <div class="card-header col-12 mx-auto">
           <h2>Current Reservations</h2>
+          <span id="newReservation"></span>
         </div>
       </div>
     </div>
+    <script type="text/javascript">
+      $.get("/api/tables/", function (data) {
+        console.log(data[0].customerID);
+        if (data) {
+          for (let i = 0; i < data.length; i++) {
+            $("#newReservation").text(data[i].customerID);
+          }
+        }
+      });
+    </script>
     <script>
       src =
         "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js";
