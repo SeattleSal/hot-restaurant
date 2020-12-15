@@ -53,8 +53,12 @@ app.use(express.json());
 
       if (tables.length < 6){
           tables.push(newCustomer);
+          // res.json(newCustomer);
+          // return true?
       } else {
           waitlist.push(newCustomer);
+          // res.json(newCustomer);
+          // return false?
       }
 
     //   console.log(newCustomer);
