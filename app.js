@@ -15,9 +15,28 @@ var tables = [
         phoneNumber: "007",
         customerEmail: "licensetokill@hotmail.com",
         customerID: "007"
+    },
+    {
+      customerName: "Dolly Parton",
+      phoneNumber: "999 999 5555",
+      customerEmail: "jolene@hotmail.com",
+      customerID: "9to5"
+    },
+    {
+      customerName: "Kenny Rogers",
+      phoneNumber: "999 555 5555",
+      customerEmail: "thegambler@hotmail.com",
+      customerID: "gabler777"
     }
 ];
-var waitlist = [];
+var waitlist = [
+  {
+    customerName: "Elmer Fudd",
+    phoneNumber: "111 111 1111",
+    customerEmail: "wabbit@hotmail.com",
+    customerID: "wabbit111"
+  }
+];
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -51,7 +70,7 @@ app.use(express.json());
   app.post("/api/tables", function(req, res) {
       var newCustomer = req.body;
 
-      if (tables.length < 6){
+      if (tables.length < 5){
           tables.push(newCustomer);
           // res.json(newCustomer);
           // return true?
@@ -68,8 +87,8 @@ app.use(express.json());
     // Clear out the table and wait lists (No POST data required) and THEN 
     tables = [];
     waitlist = [];
-    console.log(tables);
-    console.log(waitlist);
+    // console.log(tables);
+    // console.log(waitlist);
     console.log("customers cleared");
     var successMessage = [{
         success: true

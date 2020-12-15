@@ -42,7 +42,7 @@
         console.log(data[0].customerID);
         if (data) {
           for (let i = 0; i < data.length; i++) {
-            $("#newReservation").text(data[i].customerID);
+            $("#newReservation").append(`<li id=${data[i].customerID}>${i+1} ${data[i].customerID}</li>`);
           }
         }
       });
