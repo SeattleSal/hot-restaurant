@@ -9,6 +9,8 @@
       integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
       crossorigin="anonymous"
     />
+    <script src="https://code.jquery.com/jquery.js"></script>
+
     <title>Document</title>
   </head>
   <body>
@@ -26,7 +28,7 @@
           >
         </p>
         <p>
-          <a class="btn btn-secondary btn-lg pl-5" href="#" role="button"
+          <a class="btn btn-secondary btn-lg pl-5" id="clear" href="#" role="button"
             >Clear All</a
           >
         </p>
@@ -38,6 +40,13 @@
       integrity =
         "sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW";
       crossorigin = "anonymous";
+      $("#clear").on("click", function (event) {
+        event.preventDefault();
+        $.post("/api/clear").then(function (data) {
+          console.log("clearing data");
+          // alert("Adding customer...");
+        });
+      });
     </script>
   </body>
 </html>

@@ -48,6 +48,31 @@ app.use(express.json());
     res.sendFile(path.join(__dirname, "tables.html"));
   });
 
+  app.post("/api/tables", function(req, res) {
+      var newCustomer = req.body;
+
+      if (tables.length < 6){
+          tables.push(newCustomer);
+      } else {
+          waitlist.push(newCustomer);
+      }
+
+    //   console.log(newCustomer);
+  });
+
+  app.post("/api/clear", function(req, res) {
+    // Clear out the table and wait lists (No POST data required) and THEN 
+    tables = [];
+    waitlist = [];
+    console.log(tables);
+    console.log(waitlist);
+    console.log("customers cleared");
+    var successMessage = [{
+        success: true
+    }];
+    res.send(successMessage);
+  });
+
   // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function() {
