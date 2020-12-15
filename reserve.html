@@ -3,7 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Reservations!</title>
   </head>
-  <body></body>
+  <body>
+    <form>
+      <div class="form-group">
+        <label for="inputName">Name</label>
+        <input class="form-control" id="inputName" placeholder="Enter Name" />
+      </div>
+      <div class="form-group">
+        <label for="inputEmail">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="inputEmail"
+          aria-describedby="emailHelp"
+          placeholder="Enter email"
+        />
+      </div>
+      <div class="form-group">
+        <label for="inputPhoneNumber">Phone Number</label>
+        <input
+          class="form-control"
+          id="inputPhoneNumber"
+          placeholder="Enter Phone Number"
+        />
+      </div>
+      <div class="form-group">
+        <label for="inputId">Unique ID</label>
+        <input
+          class="form-control"
+          id="inputId"
+          placeholder="Enter Unique ID"
+        />
+      </div>
+      <button type="submit" id="add-btn" class="btn btn-primary">Submit</button>
+    </form>
+    <script type="text/javascript">
+      $("#add-btn").on("click", function (event) {
+        event.preventDefault();
+        var newCustomer = {
+          customerName: $("#inputName").val().trim(),
+          phoneNumber: $("#inputPhoneNumber").val().trim(),
+          customerEmail: $("#inputEmail").val().trim(),
+          customerID: $("#inputId").val().trim(),
+        };
+        $.post("/api/tables", newCustomer).then(function (data) {
+          console.log("reserve.html", data);
+          alert("Adding customer...");
+        });
+      });
+    </script>
+  </body>
 </html>
